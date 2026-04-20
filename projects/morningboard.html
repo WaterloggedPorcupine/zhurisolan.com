@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MorningBoard — Zhuri Solan</title>
+  <meta name="description" content="MorningBoard: a personal productivity desktop app built with Electron for Windows." />
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <style>
+    /* MorningBoard uses its own color scheme per the briefing */
+    :root {
+      --mb-teal:   #0C2B36;
+      --mb-orange: #F97316;
+      --mb-olive:  #7B9104;
+      --mb-bg:     #f5f7f7;
+      --mb-surface: #ffffff;
+    }
+
+    .mb-hero {
+      background: var(--mb-teal);
+      padding-block: var(--space-12) var(--space-10);
+    }
+
+    .mb-hero .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      color: rgba(255,255,255,0.5);
+      margin-bottom: var(--space-6);
+      transition: color var(--transition-fast);
+    }
+
+    .mb-hero .back-link:hover {
+      color: rgba(255,255,255,0.85);
+    }
+
+    .mb-hero h1 {
+      font-size: var(--text-3xl);
+      font-weight: var(--weight-semibold);
+      letter-spacing: -0.02em;
+      line-height: var(--leading-tight);
+      color: #ffffff;
+      margin-bottom: var(--space-3);
+    }
+
+    .mb-hero .subtitle {
+      font-size: var(--text-base);
+      color: rgba(255,255,255,0.65);
+      margin-bottom: var(--space-6);
+    }
+
+    .mb-badge {
+      display: inline-flex;
+      align-items: center;
+      font-size: var(--text-xs);
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      border: 1px solid;
+    }
+
+    .mb-badge--orange {
+      color: var(--mb-orange);
+      background: rgba(249,115,22,0.12);
+      border-color: rgba(249,115,22,0.3);
+    }
+
+    .mb-badge--olive {
+      color: #a3bf1a;
+      background: rgba(123,145,4,0.12);
+      border-color: rgba(123,145,4,0.3);
+    }
+
+    .mb-content {
+      background: var(--mb-bg);
+      padding-block: var(--space-10);
+    }
+
+    .mb-section {
+      background: var(--mb-surface);
+      border: var(--border-card);
+      border-radius: var(--radius-lg);
+      padding: var(--space-8);
+      margin-bottom: var(--space-5);
+      box-shadow: var(--shadow-card);
+    }
+
+    .mb-section h2 {
+      font-size: var(--text-base);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+      margin-bottom: var(--space-4);
+      padding-bottom: var(--space-3);
+      border-bottom: 0.5px solid var(--color-border);
+    }
+
+    /* Tab strip — decorative preview of the app's tab layout */
+    .tab-strip {
+      display: flex;
+      gap: 2px;
+      background: #e8edee;
+      border-radius: var(--radius-md);
+      padding: 4px;
+      margin-bottom: var(--space-6);
+      overflow-x: auto;
+    }
+
+    .tab-item {
+      flex-shrink: 0;
+      font-size: var(--text-xs);
+      font-weight: var(--weight-medium);
+      padding: 6px 14px;
+      border-radius: 6px;
+      color: var(--color-text-muted);
+      cursor: default;
+    }
+
+    .tab-item--active {
+      background: var(--mb-teal);
+      color: #ffffff;
+    }
+
+    /* Feature list */
+    .feature-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-4);
+    }
+
+    .feature-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-1);
+    }
+
+    .feature-item__title {
+      font-size: var(--text-sm);
+      font-weight: var(--weight-semibold);
+      color: var(--color-text-primary);
+    }
+
+    .feature-item__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+    }
+
+    /* Swatch row */
+    .swatch-row {
+      display: flex;
+      gap: var(--space-3);
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .swatch {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-xs);
+      color: var(--color-text-muted);
+    }
+
+    .swatch__dot {
+      width: 20px;
+      height: 20px;
+      border-radius: var(--radius-sm);
+      border: 0.5px solid rgba(0,0,0,0.1);
+      flex-shrink: 0;
+    }
+
+    /* Screenshot placeholder */
+    .screenshot-placeholder {
+      background: #e8edee;
+      border-radius: var(--radius-md);
+      border: var(--border-card);
+      aspect-ratio: 16 / 9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+    }
+
+    @media (max-width: 600px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .mb-section {
+        padding: var(--space-6);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header id="site-nav"></header>
+
+  <!-- Hero -->
+  <section class="mb-hero">
+    <div class="container container--narrow">
+      <a href="../index.html" class="back-link">← Back to projects</a>
+      <h1>MorningBoard</h1>
+      <p class="subtitle">A personal productivity dashboard for Windows — built with Electron.</p>
+      <div style="display: flex; flex-wrap: wrap; gap: var(--space-2);">
+        <span class="mb-badge mb-badge--orange">Desktop App</span>
+        <span class="mb-badge mb-badge--olive">Windows</span>
+        <span class="mb-badge mb-badge--olive">Electron</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Content -->
+  <main class="mb-content">
+    <div class="container container--narrow">
+
+      <!-- Overview -->
+      <div class="mb-section">
+        <h2>Overview</h2>
+        <div class="prose">
+          <p>
+            MorningBoard is a personal dashboard I built because the tools I was using every morning —
+            calendar, to-do lists, news, reading trackers — were all separate apps with separate windows.
+            I wanted one place that opened with my computer and had everything I needed to start the day.
+          </p>
+          <p>
+            The app uses a multi-tab layout so each context gets its own space without cluttering the others.
+            Light/dark mode switches automatically based on the time of day.
+          </p>
+        </div>
+
+        <div class="tab-strip" aria-label="App tabs (decorative)" aria-hidden="true">
+          <div class="tab-item tab-item--active">Calendar</div>
+          <div class="tab-item">Work Focus</div>
+          <div class="tab-item">Free Time</div>
+          <div class="tab-item">News Feed</div>
+          <div class="tab-item">Job Search</div>
+        </div>
+
+        <div class="screenshot-placeholder">
+          Screenshot coming soon
+        </div>
+      </div>
+
+      <!-- Key Features -->
+      <div class="mb-section">
+        <h2>Key Features</h2>
+        <div class="feature-grid">
+          <div class="feature-item">
+            <span class="feature-item__title">Google Calendar Integration</span>
+            <span class="feature-item__desc">Pull in events directly from your Google account. View the week at a glance from the Calendar tab.</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-item__title">Books Tracker</span>
+            <span class="feature-item__desc">Log books with reading status and ratings. Lightweight — no Goodreads account required.</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-item__title">Fanfiction Import</span>
+            <span class="feature-item__desc">Paste a fic URL or metadata to add it to your reading list. Predates the AO3 extension.</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-item__title">Auto Light/Dark Mode</span>
+            <span class="feature-item__desc">Switches color scheme based on time of day — light in the morning, dark after sunset.</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-item__title">News Feed</span>
+            <span class="feature-item__desc">Curated RSS feed reader pulled into the News Feed tab. One less browser tab to manage.</span>
+          </div>
+          <div class="feature-item">
+            <span class="feature-item__title">Job Search Tab</span>
+            <span class="feature-item__desc">Dedicated space for tracking job applications, links, and notes during an active search.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design System -->
+      <div class="mb-section">
+        <h2>Design</h2>
+        <div class="prose">
+          <p>
+            Designed the full color scheme and typography from scratch. The palette is calm enough to
+            look at first thing in the morning without being sterile.
+          </p>
+        </div>
+        <div class="swatch-row" style="margin-top: var(--space-4);">
+          <div class="swatch">
+            <div class="swatch__dot" style="background: #0C2B36;"></div>
+            <span>#0C2B36 — Deep teal (primary)</span>
+          </div>
+          <div class="swatch">
+            <div class="swatch__dot" style="background: #F97316;"></div>
+            <span>#F97316 — Orange (accent)</span>
+          </div>
+          <div class="swatch">
+            <div class="swatch__dot" style="background: #7B9104;"></div>
+            <span>#7B9104 — Olive green</span>
+          </div>
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-4);">
+          Typography: <strong>Sora</strong> for headings · <strong>DM Sans</strong> for body
+        </p>
+      </div>
+
+      <!-- Stack -->
+      <div class="mb-section">
+        <h2>Stack</h2>
+        <div class="tag-list">
+          <span class="tag tag--teal">Electron</span>
+          <span class="tag tag--teal">JavaScript</span>
+          <span class="tag tag--blue">Google Calendar API</span>
+          <span class="tag tag--blue">HTML / CSS</span>
+          <span class="tag tag--purple">Windows</span>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script src="../assets/js/nav.js"></script>
+</body>
+</html>

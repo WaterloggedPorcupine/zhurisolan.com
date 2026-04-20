@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Zhuri Solan</title>
+  <meta name="description" content="Portfolio of Zhuri Solan — software projects in browser extensions, desktop apps, and productivity tooling." />
+  <link rel="stylesheet" href="assets/css/global.css" />
+</head>
+<body>
+
+  <header id="site-nav"></header>
+
+  <main>
+
+    <!-- Hero -->
+    <section class="page-section page-section--hero">
+      <div class="container container--narrow">
+        <h1 style="font-size: var(--text-4xl); font-weight: var(--weight-semibold); letter-spacing: -0.025em; line-height: var(--leading-tight); margin-bottom: var(--space-4);">
+          From engineering systems<br>to designing the software<br>people use.
+        </h1>
+        <p style="font-size: var(--text-lg); color: var(--color-text-secondary); max-width: 480px;">
+          Browser extensions, desktop apps, and productivity tooling — built to fill the gaps.
+        </p>
+      </div>
+    </section>
+
+    <!-- Featured Projects -->
+    <section class="page-section" id="projects" style="padding-top: 0;">
+      <div class="container">
+        <p class="section-label">Featured Projects</p>
+        <div class="card-grid">
+
+          <!-- AO3 Story Tracker -->
+          <a class="project-card" href="projects/ao3-tracker.html">
+            <span class="project-card__label tag--teal">Chrome Extension</span>
+            <h2 class="project-card__title">AO3 Story Tracker</h2>
+            <p class="project-card__desc">
+              A browser extension for tracking fanfiction reading progress on Archive of Our Own.
+              Six reading states, persistent storage, and a clean sidebar UI — built and shipped to the Chrome Web Store.
+            </p>
+            <div class="tag-list">
+              <span class="tag tag--teal">JavaScript</span>
+              <span class="tag tag--teal">Chrome Extensions</span>
+              <span class="tag tag--teal">Firefox</span>
+            </div>
+            <p class="project-card__highlight">Owned end-to-end: design, engineering, and store submission across three browsers.</p>
+          </a>
+
+          <!-- MorningBoard -->
+          <a class="project-card" href="projects/morningboard.html">
+            <span class="project-card__label tag--blue">Desktop App</span>
+            <h2 class="project-card__title">MorningBoard</h2>
+            <p class="project-card__desc">
+              A personal productivity dashboard for Windows built with Electron. Calendar integration,
+              a books tracker, and automatic light/dark switching based on time of day.
+            </p>
+            <div class="tag-list">
+              <span class="tag tag--blue">Electron</span>
+              <span class="tag tag--blue">JavaScript</span>
+              <span class="tag tag--blue">Google Calendar API</span>
+            </div>
+            <p class="project-card__highlight">Designed the full multi-tab layout and color system from scratch.</p>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Archived Projects -->
+    <section class="page-section" style="padding-top: 0;">
+      <div class="container">
+        <p class="section-label">Earlier Work</p>
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted); max-width: 560px; margin-bottom: var(--space-6); line-height: var(--leading-relaxed);">
+          Hardware and bioengineering projects from grad school and early career.
+          Keeping them here for context — they shaped how I think about systems, constraints, and user needs.
+        </p>
+        <div class="archived-grid">
+
+          <div class="archived-card">
+            <p class="archived-card__title">Marsboreal Greenhouse</p>
+            <p class="archived-card__desc">Bioengineering capstone — controlled habitat design</p>
+          </div>
+
+          <div class="archived-card">
+            <p class="archived-card__title">The Body Bun</p>
+            <p class="archived-card__desc">Wearable hardware concept</p>
+          </div>
+
+          <div class="archived-card">
+            <p class="archived-card__title">Oppy: Mars Rover</p>
+            <p class="archived-card__desc">Robotic systems project</p>
+          </div>
+
+          <div class="archived-card">
+            <p class="archived-card__title">You Have Me</p>
+            <p class="archived-card__desc">Interactive empathy prototype</p>
+          </div>
+
+        </div>
+        <div style="margin-top: var(--space-5);">
+          <a href="projects/archived.html" class="link-accent" style="font-size: var(--text-sm);">View all earlier work →</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="assets/js/nav.js"></script>
+</body>
+</html>
