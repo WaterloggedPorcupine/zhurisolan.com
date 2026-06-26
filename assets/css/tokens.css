@@ -6,32 +6,30 @@
 
 :root {
   /* --- Color: Base --- */
-  --color-nav:          #16293a;
-  --color-bg:           #f8f8f6;
-  --color-surface:      #ffffff;
-  --color-border:       rgba(0, 0, 0, 0.1);
+  --color-bg:           #89E0C9;
+  --color-surface:      #CCE089;
+  --color-border:       rgba(0, 0, 0, 0.18);
 
   /* --- Color: Text --- */
-  --color-text-primary:   #1a1a1a;
-  --color-text-secondary: #5a5a5a;
-  --color-text-muted:     #8a8a8a;
-  --color-text-inverse:   #ffffff;
+  --color-text-primary:   #1c1a17;
+  --color-text-secondary: #3a3530;
+  --color-text-muted:     #5a6050;
+  --color-text-inverse:   #89E0C9;
 
   /* --- Color: Accents --- */
-  --color-teal:   #1D9E75;
-  --color-blue:   #185FA5;
-  --color-purple: #534AB7;
-  --color-amber:  #854F0B;
+  --color-purple: #9D89E0;
+  --color-blue:   #E089A0;
+  --color-amber:  #CCE089;
 
   /* --- Color: Accent hover variants --- */
-  --color-teal-light:   #e8f7f2;
-  --color-blue-light:   #e6eef8;
-  --color-purple-light: #eeedf8;
-  --color-amber-light:  #f7ede0;
+  --color-purple-light: #ede8fb;
+  --color-blue-light:   #fce8ef;
+  --color-amber-light:  #f3f9d4;
 
   /* --- Typography --- */
-  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
-  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+  --font-sans:    'Barlow', system-ui, -apple-system, sans-serif;
+  --font-display: 'Barlow Condensed', system-ui, sans-serif;
+  --font-mono:    'JetBrains Mono', 'Fira Code', monospace;
 
   --text-xs:   0.75rem;   /* 12px */
   --text-sm:   0.875rem;  /* 14px */
@@ -41,13 +39,16 @@
   --text-2xl:  1.5rem;    /* 24px */
   --text-3xl:  1.875rem;  /* 30px */
   --text-4xl:  2.25rem;   /* 36px */
+  --text-5xl:  3.5rem;    /* 56px */
 
   --weight-normal:   400;
   --weight-medium:   500;
   --weight-semibold: 600;
+  --weight-bold:     700;
+  --weight-black:    900;
 
-  --leading-tight:  1.25;
-  --leading-normal: 1.6;
+  --leading-tight:   1.1;
+  --leading-normal:  1.6;
   --leading-relaxed: 1.75;
 
   /* --- Spacing --- */
@@ -70,15 +71,25 @@
   --nav-height:        60px;
 
   /* --- Borders --- */
-  --radius-sm:   4px;
-  --radius-md:   8px;
-  --radius-lg:   12px;
-  --border-card: 0.5px solid var(--color-border);
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   4px;
+  --border-card: 1px solid var(--color-border);
 
   /* --- Shadows --- */
-  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.06);
+  --shadow-card: none;
 
   /* --- Transitions --- */
   --transition-fast: 120ms ease;
   --transition-base: 200ms ease;
+}
+
+[data-theme="dark"] {
+  --color-bg:             #073642;
+  --color-surface:        #0a3f4e;
+  --color-border:         rgba(255, 255, 255, 0.12);
+  --color-text-primary:   #ede9e1;
+  --color-text-secondary: #93a8ae;
+  --color-text-muted:     #567880;
+  --color-text-inverse:   #073642;
 }

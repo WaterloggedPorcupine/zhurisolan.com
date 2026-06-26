@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AO3 Story Tracker — Zhuri Solan</title>
-  <meta name="description" content="Case study: AO3 Story Tracker, a Chrome extension for tracking fanfiction reading progress on Archive of Our Own." />
+  <title>FandomGobbler. — Zhuri Solan</title>
+  <meta name="description" content="Case study: FandomGobbler, a Chrome extension for tracking fanfiction reading progress on Archive of Our Own." />
   <link rel="stylesheet" href="../assets/css/global.css" />
+  <script>(function(){var t=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t===null&&p))document.documentElement.setAttribute('data-theme','dark');})();</script>
   <style>
     /*
      * This page intentionally breaks from the global palette.
@@ -13,14 +14,14 @@
      */
 
     :root {
-      --ext-bg:           #ffffff;
-      --ext-bg2:          #f8f8f7;
-      --ext-bg3:          #f2f1ef;
-      --ext-border:       rgba(0,0,0,0.09);
-      --ext-border-md:    rgba(0,0,0,0.15);
-      --ext-text:         #1a1a18;
-      --ext-text2:        #555550;
-      --ext-text3:        #99998f;
+      --ext-bg:           #f0ece3;
+      --ext-bg2:          #eae6dd;
+      --ext-bg3:          #e2ddd4;
+      --ext-border:       rgba(0,0,0,0.12);
+      --ext-border-md:    rgba(0,0,0,0.18);
+      --ext-text:         #1c1a17;
+      --ext-text2:        #5a5550;
+      --ext-text3:        #9a9590;
       --ext-accent:       #2563eb;
       --ext-accent-bg:    #eff4ff;
       --ext-accent-text:  #1d4ed8;
@@ -38,20 +39,15 @@
       --ext-dnf-bg:       #f9fafb;
     }
 
-    body {
-      background: var(--ext-bg2);
-      color: var(--ext-text);
-    }
-
     /* Override prose text color to match extension */
     .prose p, .prose ul {
-      color: var(--ext-text2);
+      color: var(--color-text-secondary);
     }
 
     /* Page hero */
     .ao3-hero {
-      background: var(--ext-bg);
-      border-bottom: 1px solid var(--ext-border);
+      background: var(--color-bg);
+      border-bottom: 1px solid var(--color-border);
       padding-block: var(--space-12) var(--space-10);
     }
 
@@ -60,27 +56,29 @@
       align-items: center;
       gap: var(--space-2);
       font-size: var(--text-sm);
-      color: var(--ext-text3);
+      /*color: var(--color-purple);*/
       margin-bottom: var(--space-6);
-      transition: color var(--transition-fast);
+      transition: opacity var(--transition-fast);
     }
 
     .ao3-hero .back-link:hover {
-      color: var(--ext-accent);
+      opacity: 0.7;
     }
 
     .ao3-hero h1 {
-      font-size: var(--text-3xl);
-      font-weight: var(--weight-semibold);
+      font-family: var(--font-display);
+      font-size: clamp(3rem, 8vw, 6rem);
+      font-weight: var(--weight-black);
       letter-spacing: -0.02em;
-      line-height: var(--leading-tight);
-      color: var(--ext-text);
-      margin-bottom: var(--space-3);
+      line-height: 0.92;
+      color: var(--color-purple);
+      margin-bottom: var(--space-4);
+      text-transform: uppercase;
     }
 
     .ao3-hero .subtitle {
       font-size: var(--text-base);
-      color: var(--ext-text2);
+      color: var(--color-text-secondary);
       margin-bottom: var(--space-6);
     }
 
@@ -120,8 +118,8 @@
 
     /* Section card wrapper */
     .case-section {
-      background: var(--ext-bg);
-      border: 1px solid var(--ext-border);
+      background: var(--color-surface);
+      border: var(--border-card);
       border-radius: var(--radius-lg);
       padding: var(--space-8);
       margin-bottom: var(--space-5);
@@ -131,10 +129,10 @@
       font-size: var(--text-base);
       font-weight: var(--weight-semibold);
       letter-spacing: 0.01em;
-      color: var(--ext-text);
+      color: var(--color-text-primary);
       margin-bottom: var(--space-4);
       padding-bottom: var(--space-3);
-      border-bottom: 1px solid var(--ext-border);
+      border-bottom: 1px solid var(--color-border);
     }
 
     /* Status pills — mirrors extension UI exactly */
@@ -284,15 +282,30 @@
     .btn-ext:hover { opacity: 0.8; }
 
     .btn-ext--primary {
-      background: var(--ext-accent);
-      color: #ffffff;
-      border-color: var(--ext-accent);
+      background: var(--color-purple);
+      color: var(--color-bg);
+      border-color: var(--color-purple);
     }
 
     .btn-ext--outline {
       background: transparent;
       color: var(--ext-text);
       border-color: var(--ext-border-md);
+    }
+
+    /* Standalone links section */
+    .links-section {
+      border-top: 1px solid var(--color-border);
+      padding-block: var(--space-12);
+    }
+
+    .links-section h2 {
+      font-size: var(--text-xs);
+      font-weight: var(--weight-semibold);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-bottom: var(--space-5);
     }
 
     @media (max-width: 700px) {
@@ -318,15 +331,10 @@
   <!-- Hero -->
   <section class="ao3-hero">
     <div class="container container--narrow">
-      <a href="../index.html" class="back-link">← Back to projects</a>
-      <h1>AO3 Story Tracker</h1>
-      <p class="subtitle">A browser extension for tracking fanfiction reading progress on Archive of Our Own.</p>
-      <div class="hero-meta">
-        <span class="hero-badge hero-badge--blue">Chrome Extension</span>
-        <span class="hero-badge hero-badge--blue">Firefox</span>
-        <span class="hero-badge hero-badge--blue">Edge</span>
-        <span class="hero-badge hero-badge--green">Live on Chrome Web Store</span>
-      </div>
+      <a href="../index.html" class="back-link">← Go Back</a>
+      <h1>FandomGobbler.</h1>
+      <p class="subtitle">A browser extension for tracking fanfiction reading progress on Archive of Our Own and Fanfiction.net.</p>
+
     </div>
   </section>
 
@@ -339,12 +347,12 @@
         <h2>The Problem</h2>
         <div class="prose">
           <p>
-            Archive of Our Own has millions of stories across thousands of fandoms, but no native way
-            to track your reading progress across them. Readers resort to browser bookmarks, spreadsheets,
-            or just memory — all of which break down quickly when you're juggling dozens of ongoing works.
+            Archive of Our Own has millions of stories across thousands of fandoms. In order to keep track of works, readers resort to browser bookmarks, spreadsheets, phone tabs,
+            or just memory to categorize tens, hundreds, and yes, even thousands of works. Since there isn't a robust way to cleanly categorize and visualize these works, there's
+            an ever present wish to have something that can sort through these works.
           </p>
           <p>
-            What was missing: a lightweight, in-browser tracker that lived alongside the reading experience
+            A solution that I worked towards is an in-browser tracker that lived alongside reading on AO3
             without requiring a separate account or app.
           </p>
         </div>
@@ -356,8 +364,8 @@
         <div class="with-preview">
           <div class="prose">
             <p>
-              A sidebar-based Chrome extension that lets you assign any AO3 story to one of six
-              reading states, persisted locally via <code>chrome.storage.local</code>.
+              A sidebar-based web extension that lets you assign any AO3 story to one of six
+              reading states (or creating their own), persisted locally by utilizing local storage.
               The sidebar is accessible from any page on AO3 via a floating button.
             </p>
             <p>The six states mirror how readers actually think about their reading queues:</p>
@@ -370,7 +378,7 @@
               <span class="status-pill status-pill--dnf">DNF</span>
             </div>
             <p>
-              Built for Chrome first, then ported to Firefox and Edge with a shared codebase and
+              Available on Chrome, Firefox, Firefox for Android, and Edge with a shared codebase and
               browser-specific manifest variants.
             </p>
           </div>
@@ -415,18 +423,16 @@
       <div class="case-section">
         <h2>Key Decisions</h2>
         <div class="prose">
-          <p><strong>Why a sidebar?</strong> A popup closes the moment you click away — not useful while reading.
+          <p><strong>Why a sidebar?</strong> A popup closes the moment you click away which is not useful while reading.
           A sidebar stays open across page navigations within AO3, so you can check your list, update a status,
           and keep reading without losing your place.</p>
 
-          <p><strong>Why six states?</strong> Most reading trackers offer three (want/reading/read).
-          That's not enough. Re-reading is a distinct state — you've finished once and you're going again intentionally.
-          On Hold and DNF are meaningfully different: one implies intent to return, the other doesn't.
-          Six states covers real reading behavior without over-engineering it.</p>
+          <p><strong>Why six states?</strong> Most reading trackers offer three (want/reading/read), but people are constantly re-evaluating. People tend to re-read
+            a work they really enjoyed, and just as equally put down a work they didn't care for. The ability to create your own "custom" category also encourages readers
+            organize in a manner that suits their preference and needs.</p>
 
-          <p><strong>Why <code>chrome.storage.local</code>?</strong> No account required, no server to maintain,
-          no privacy concerns. Data lives in the browser and stays with the user. The tradeoff is no sync across
-          devices — a known limitation, not an oversight.</p>
+          <p><strong>Why local storage?</strong> In order to the most basic of organizing on AO3, a user would need an account, this extension is tied to local storage
+            so there's no need for an account. It also keeps all data complete private to the user. The tradeoff is no sync across devices which is resolved by using Google Sheets as a database.</p>
         </div>
       </div>
 
@@ -435,73 +441,33 @@
         <h2>The Hardest Problem</h2>
         <div class="prose">
           <p>
-            AO3's DOM is inconsistent. The subscription button — which the extension uses to detect whether
-            a story is tracked — renders differently depending on whether the user is subscribed or not,
-            and the markup changed between AO3 updates without warning.
-          </p>
-          <p>
-            The original regex used to detect subscription state:
+            AO3's DOM is inconsistent and there is no existing API. As a result any developer intending to do meaningful work is forced to create an
+            internal database and almost appear bot-like in its engagement with the website. That and creating a dark/light mode on AO3 was like a dentist working
+            on a root canal with no anesthesia (obligatory also not a dentist?).
           </p>
         </div>
-
-        <div class="code-block">
-<span class="comment">// original — broke on AO3's actual markup</span>
-<span class="keyword">const</span> subMatch = html.match(<span class="string">/name="commit"\s+value="(Subscribe|Unsubscribe)"/</span>);
-        </div>
-
-        <div class="prose">
-          <p>
-            This matched the spec, not reality. AO3's actual markup had the attributes in a different order,
-            and sometimes had additional attributes between <code>name</code> and <code>value</code>.
-            The fix required inspecting the live DOM directly rather than relying on regex over the raw HTML string.
-          </p>
-        </div>
-
-        <div class="code-block">
-<span class="comment">// fixed — query the DOM directly</span>
-<span class="keyword">const</span> btn = document.querySelector(<span class="string">'input[name="commit"][value="Unsubscribe"]'</span>);
-<span class="keyword">const</span> isSubscribed = btn !== <span class="keyword">null</span>;
-        </div>
-
-        <div class="prose">
-          <p>
-            Lesson: when scraping state from a third-party site, trust the DOM API over string matching.
-            It's more robust to attribute reordering and whitespace variation.
-          </p>
-        </div>
-      </div>
-
-      <!-- 5. What I'd do differently -->
-      <div class="case-section">
-        <h2>What I'd Do Differently</h2>
-        <div class="prose">
-          <ul>
-            <li>Add optional cloud sync from the start — I get regular requests for cross-device support.</li>
-            <li>Write the DOM selectors as a separate, versioned config file so AO3 markup changes can be patched
-            without touching core logic.</li>
-            <li>Build in an automated smoke test against the live AO3 DOM to catch breakage before users report it.</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- CTA -->
-      <div class="case-section" style="background: var(--ext-accent-bg); border-color: rgba(37,99,235,0.15);">
-        <h2 style="border-color: rgba(37,99,235,0.15);">Links</h2>
-        <div class="cta-row">
-          <a href="https://chromewebstore.google.com" target="_blank" rel="noopener" class="btn-ext btn-ext--primary">
-            Chrome Web Store ↗
-          </a>
-          <a href="https://github.com/WaterloggedPorcupine" target="_blank" rel="noopener" class="btn-ext btn-ext--outline">
-            GitHub ↗
-          </a>
-        </div>
-        <p style="font-size: var(--text-xs); color: var(--ext-text3); margin-top: var(--space-3);">
-          Also available for Firefox and Edge. See the GitHub repo for build instructions.
-        </p>
       </div>
 
     </div>
   </main>
+
+  <!-- Links -->
+  <section class="links-section">
+    <div class="container container--narrow">
+      <h2>Links</h2>
+      <div class="cta-row">
+        <a href="https://chromewebstore.google.com" target="_blank" rel="noopener" class="btn-ext btn-ext--primary">
+          Chrome Web Store ↗
+        </a>
+        <a href="https://addons.mozilla.org/en-US/firefox/addon/ao3-story-tracker/" target="_blank" rel="noopener" class="btn-ext btn-ext--primary">
+          Firefox Add-ons ↗
+        </a>
+        <a href="https://github.com/WaterloggedPorcupine" target="_blank" rel="noopener" class="btn-ext btn-ext--outline">
+          GitHub ↗
+        </a>
+      </div>
+    </div>
+  </section>
 
   <script src="../assets/js/nav.js"></script>
 </body>
