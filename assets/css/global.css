@@ -3,7 +3,7 @@
    Base resets, typography, layout, and shared components.
    ============================================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@700;900&display=swap');
 @import './tokens.css';
 
 /* --- Reset --- */
@@ -62,7 +62,8 @@ ul, ol {
   top: 0;
   z-index: 100;
   height: var(--nav-height);
-  background-color: var(--color-nav);
+  background-color: var(--color-bg);
+  border-bottom: 1px solid var(--color-border);
   display: flex;
   align-items: center;
 }
@@ -74,15 +75,16 @@ ul, ol {
 }
 
 .nav-wordmark {
-  font-size: var(--text-base);
+  font-size: var(--text-sm);
   font-weight: var(--weight-semibold);
-  color: var(--color-text-inverse);
-  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   transition: opacity var(--transition-fast);
 }
 
 .nav-wordmark:hover {
-  opacity: 0.8;
+  opacity: 0.5;
 }
 
 .nav-links {
@@ -92,15 +94,42 @@ ul, ol {
 
 .nav-links a {
   font-size: var(--text-sm);
-  color: rgba(255, 255, 255, 0.75);
+  color: var(--color-text-secondary);
   font-weight: var(--weight-medium);
   transition: color var(--transition-fast);
 }
 
 .nav-links a:hover,
 .nav-links a[aria-current="page"] {
-  color: var(--color-text-inverse);
+  color: var(--color-text-primary);
 }
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+}
+
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--color-text-secondary);
+  padding: var(--space-1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  transition: color var(--transition-fast), opacity var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  color: var(--color-text-primary);
+}
+
+.theme-icon--moon { display: none; }
+[data-theme="dark"] .theme-icon--sun  { display: none; }
+[data-theme="dark"] .theme-icon--moon { display: block; }
 
 /* --- Page sections --- */
 .page-section {
@@ -120,6 +149,52 @@ ul, ol {
   margin-bottom: var(--space-6);
 }
 
+/* --- Hero display type --- */
+.hero-display {
+  font-family: var(--font-display);
+  margin-bottom: var(--space-8);
+}
+
+.hero-display__line1 {
+  display: flex;
+  align-items: baseline;
+  gap: 0.25em;
+  line-height: 1;
+}
+
+.hero-display__small {
+  font-size: clamp(1.1rem, 2.5vw, 1.75rem);
+  font-weight: var(--weight-bold);
+  color: var(--color-text-secondary);
+  letter-spacing: 0.02em;
+}
+
+.hero-display__fill {
+  display: block;
+  font-size: clamp(3.5rem, 11vw, 8.5rem);
+  font-weight: var(--weight-black);
+  color: var(--color-purple);
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+}
+
+.hero-display__outline {
+  display: block;
+  font-size: clamp(3.5rem, 11vw, 8.5rem);
+  font-weight: var(--weight-black);
+  color: transparent;
+  -webkit-text-stroke: 2px var(--color-text-primary);
+  letter-spacing: -0.02em;
+  line-height: 0.92;
+}
+
+.hero-sub {
+  font-size: var(--text-lg);
+  color: var(--color-text-secondary);
+  max-width: 480px;
+  line-height: var(--leading-relaxed);
+}
+
 /* --- Project cards --- */
 .card-grid {
   display: grid;
@@ -130,34 +205,36 @@ ul, ol {
 .project-card {
   background: var(--color-surface);
   border: var(--border-card);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   padding: var(--space-6);
-  box-shadow: var(--shadow-card);
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  transition: box-shadow var(--transition-base), border-color var(--transition-base);
+  transition: border-color var(--transition-base);
   text-decoration: none;
   color: inherit;
 }
 
 .project-card:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: rgba(0, 0, 0, 0.18);
+  border-color: rgba(0, 0, 0, 0.4);
 }
 
-.project-card__label {
+.project-card__category {
   font-size: var(--text-xs);
   font-weight: var(--weight-semibold);
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
+  color: var(--color-text-muted);
 }
 
 .project-card__title {
-  font-size: var(--text-xl);
-  font-weight: var(--weight-semibold);
+  font-family: var(--font-display);
+  font-size: var(--text-2xl);
+  font-weight: var(--weight-black);
   line-height: var(--leading-tight);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-purple);
 }
 
 .project-card__desc {
@@ -171,34 +248,14 @@ ul, ol {
   font-size: var(--text-xs);
   color: var(--color-text-muted);
   padding-top: var(--space-2);
-  border-top: 0.5px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
 }
 
-.tag-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-2);
-}
-
-.tag {
-  font-size: var(--text-xs);
-  font-weight: var(--weight-medium);
-  padding: var(--space-1) var(--space-3);
-  border-radius: 999px;
-  border: 0.5px solid currentColor;
-  opacity: 0.75;
-}
-
-.tag--teal   { color: var(--color-teal); }
-.tag--blue   { color: var(--color-blue); }
-.tag--purple { color: var(--color-purple); }
-.tag--amber  { color: var(--color-amber); }
-
-/* --- Archived cards (lower visual weight) --- */
+/* --- Archived cards (editorial list style) --- */
 .archived-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: var(--space-5);
 }
 
 .archived-card {
@@ -208,7 +265,7 @@ ul, ol {
   padding: var(--space-5);
   display: flex;
   flex-direction: column;
-  gap: var(--space-2);
+  gap: var(--space-1);
 }
 
 .archived-card__title {
@@ -269,14 +326,14 @@ ul, ol {
 .prose code {
   font-family: var(--font-mono);
   font-size: 0.875em;
-  background: rgba(0,0,0,0.05);
+  background: rgba(0,0,0,0.06);
   padding: 0.1em 0.35em;
   border-radius: var(--radius-sm);
 }
 
 /* --- Inline link style --- */
 .link-accent {
-  color: var(--color-teal);
+  color: var(--color-purple);
   font-weight: var(--weight-medium);
   transition: opacity var(--transition-fast);
 }
@@ -294,7 +351,7 @@ ul, ol {
   font-weight: var(--weight-medium);
   padding: var(--space-3) var(--space-5);
   border-radius: var(--radius-md);
-  border: 0.5px solid transparent;
+  border: 1px solid transparent;
   cursor: pointer;
   transition: opacity var(--transition-fast);
   text-decoration: none;
@@ -303,7 +360,7 @@ ul, ol {
 .btn:hover { opacity: 0.85; }
 
 .btn--primary {
-  background: var(--color-nav);
+  background: var(--color-text-primary);
   color: var(--color-text-inverse);
 }
 
@@ -314,16 +371,49 @@ ul, ol {
 }
 
 .btn--outline:hover {
-  background: rgba(0,0,0,0.03);
+  background: rgba(0,0,0,0.04);
   opacity: 1;
 }
 
 /* --- Divider --- */
 .divider {
   border: none;
-  border-top: 0.5px solid var(--color-border);
+  border-top: 1px solid var(--color-border);
   margin-block: var(--space-2);
 }
+
+/* --- Projects + archive side-by-side layout --- */
+.projects-layout .archived-grid {
+  gap: 0;
+}
+
+.projects-layout .archived-card {
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  border-radius: 0;
+  padding: var(--space-4) 0;
+}
+
+.projects-layout {
+  display: grid;
+  grid-template-columns: 1fr 260px;
+  gap: var(--space-16);
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .projects-layout {
+    grid-template-columns: 1fr;
+    gap: var(--space-12);
+  }
+}
+
+/* --- Theme transitions --- */
+body           { transition: background-color var(--transition-base), color var(--transition-base); }
+.site-nav      { transition: background-color var(--transition-base), border-color var(--transition-base); }
+.project-card  { transition: background-color var(--transition-base), border-color var(--transition-base); }
+.archived-card { transition: border-color var(--transition-base); }
 
 /* --- Responsive --- */
 @media (max-width: 640px) {
@@ -345,6 +435,10 @@ ul, ol {
 
   .archived-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-display__outline {
+    -webkit-text-stroke-width: 1.5px;
   }
 }
 

@@ -6,6 +6,7 @@
   <title>Zhuri Solan</title>
   <meta name="description" content="Portfolio of Zhuri Solan — software projects in browser extensions, desktop apps, and productivity tooling." />
   <link rel="stylesheet" href="assets/css/global.css" />
+  <script>(function(){var t=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t===null&&p))document.documentElement.setAttribute('data-theme','dark');})();</script>
 </head>
 <body>
 
@@ -15,91 +16,81 @@
 
     <!-- Hero -->
     <section class="page-section page-section--hero">
-      <div class="container container--narrow">
-        <h1 style="font-size: var(--text-4xl); font-weight: var(--weight-semibold); letter-spacing: -0.025em; line-height: var(--leading-tight); margin-bottom: var(--space-4);">
-          From engineering systems<br>to designing the software<br>people use.
+      <div class="container">
+        <h1 class="hero-display">
+          <span class="hero-display__outline">A PORTFOLIO</span>
+          <span class="hero-display__fill">OF EVERYDAY STUFF</span>
         </h1>
-        <p style="font-size: var(--text-lg); color: var(--color-text-secondary); max-width: 480px;">
-          Browser extensions, desktop apps, and productivity tooling — built to fill the gaps.
+        <p class="hero-sub">
+          Browser extensions, desktop apps, space centered environmental design, and whatever else satisfies ideas of earworm-istic nature.
         </p>
       </div>
     </section>
 
-    <!-- Featured Projects -->
+    <!-- Projects + Archive -->
     <section class="page-section" id="projects" style="padding-top: 0;">
       <div class="container">
-        <p class="section-label">Featured Projects</p>
-        <div class="card-grid">
+        <div class="projects-layout">
 
-          <!-- AO3 Story Tracker -->
-          <a class="project-card" href="projects/ao3-tracker.html">
-            <span class="project-card__label tag--teal">Chrome Extension</span>
-            <h2 class="project-card__title">AO3 Story Tracker</h2>
-            <p class="project-card__desc">
-              A browser extension for tracking fanfiction reading progress on Archive of Our Own.
-              Six reading states, persistent storage, and a clean sidebar UI — built and shipped to the Chrome Web Store.
-            </p>
-            <div class="tag-list">
-              <span class="tag tag--teal">JavaScript</span>
-              <span class="tag tag--teal">Chrome Extensions</span>
-              <span class="tag tag--teal">Firefox</span>
+          <!-- Featured Projects -->
+          <div>
+            <p class="section-label">Featured Projects</p>
+            <div class="card-grid">
+
+              <a class="project-card" href="projects/ao3-tracker.html">
+                <span class="project-card__category">Web Extension</span>
+                <h2 class="project-card__title">FandomGobbler.</h2>
+                <p class="project-card__desc">
+                  A browser extension for tracking fanfiction reading progress on Archive of Our Own.
+                  Six reading categories, advanced tracking features, and a clean sidebar UI.
+                </p>
+                <p class="project-card__highlight">Owned end-to-end: design, engineering, and store submission across three browsers.</p>
+              </a>
+
+              <a class="project-card" href="projects/morningboard.html">
+                <span class="project-card__category">Desktop App</span>
+                <h2 class="project-card__title">MorningBoard</h2>
+                <p class="project-card__desc">
+                  A personal productivity dashboard for Windows built with Electron. Calendar integration,
+                  a books tracker, and automatic light/dark switching based on time of day.
+                </p>
+                <p class="project-card__highlight">Designed the full multi-tab layout and color system from scratch.</p>
+              </a>
+
             </div>
-            <p class="project-card__highlight">Owned end-to-end: design, engineering, and store submission across three browsers.</p>
-          </a>
+          </div>
 
-          <!-- MorningBoard -->
-          <a class="project-card" href="projects/morningboard.html">
-            <span class="project-card__label tag--blue">Desktop App</span>
-            <h2 class="project-card__title">MorningBoard</h2>
-            <p class="project-card__desc">
-              A personal productivity dashboard for Windows built with Electron. Calendar integration,
-              a books tracker, and automatic light/dark switching based on time of day.
-            </p>
-            <div class="tag-list">
-              <span class="tag tag--blue">Electron</span>
-              <span class="tag tag--blue">JavaScript</span>
-              <span class="tag tag--blue">Google Calendar API</span>
+          <!-- Archive -->
+          <div>
+            <p class="section-label">Earlier Work</p>
+            <div class="archived-grid">
+
+              <div class="archived-card">
+                <p class="archived-card__title">Marsboreal Greenhouse</p>
+                <p class="archived-card__desc">NASA's 2019 BIG Idea Challenge Proposal</p>
+              </div>
+
+              <div class="archived-card">
+                <p class="archived-card__title">The Body Bun</p>
+                <p class="archived-card__desc">An Adaptable Transport Backboard</p>
+              </div>
+
+              <div class="archived-card">
+                <p class="archived-card__title">Oppy: Mars Rover</p>
+                <p class="archived-card__desc">A children's storybook on Opportunity, the Mars Rover</p>
+              </div>
+
+              <div class="archived-card">
+                <p class="archived-card__title">You Have Me</p>
+                <p class="archived-card__desc">A desk toy to inspire joy</p>
+              </div>
+
             </div>
-            <p class="project-card__highlight">Designed the full multi-tab layout and color system from scratch.</p>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- Archived Projects -->
-    <section class="page-section" style="padding-top: 0;">
-      <div class="container">
-        <p class="section-label">Earlier Work</p>
-        <p style="font-size: var(--text-sm); color: var(--color-text-muted); max-width: 560px; margin-bottom: var(--space-6); line-height: var(--leading-relaxed);">
-          Hardware and bioengineering projects from grad school and early career.
-          Keeping them here for context — they shaped how I think about systems, constraints, and user needs.
-        </p>
-        <div class="archived-grid">
-
-          <div class="archived-card">
-            <p class="archived-card__title">Marsboreal Greenhouse</p>
-            <p class="archived-card__desc">Bioengineering capstone — controlled habitat design</p>
+            <div style="margin-top: var(--space-5);">
+              <a href="projects/archived.html" class="link-accent" style="font-size: var(--text-sm);">View all →</a>
+            </div>
           </div>
 
-          <div class="archived-card">
-            <p class="archived-card__title">The Body Bun</p>
-            <p class="archived-card__desc">Wearable hardware concept</p>
-          </div>
-
-          <div class="archived-card">
-            <p class="archived-card__title">Oppy: Mars Rover</p>
-            <p class="archived-card__desc">Robotic systems project</p>
-          </div>
-
-          <div class="archived-card">
-            <p class="archived-card__title">You Have Me</p>
-            <p class="archived-card__desc">Interactive empathy prototype</p>
-          </div>
-
-        </div>
-        <div style="margin-top: var(--space-5);">
-          <a href="projects/archived.html" class="link-accent" style="font-size: var(--text-sm);">View all earlier work →</a>
         </div>
       </div>
     </section>
