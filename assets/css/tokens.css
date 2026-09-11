@@ -6,7 +6,7 @@
 
 :root {
   /* --- Color: Base --- */
-  --color-bg:           #89E0C9;
+  --color-bg:           #ede8fb;
   --color-surface:      #CCE089;
   --color-border:       rgba(0, 0, 0, 0.18);
 
@@ -14,12 +14,13 @@
   --color-text-primary:   #1c1a17;
   --color-text-secondary: #3a3530;
   --color-text-muted:     #5a6050;
-  --color-text-inverse:   #89E0C9;
+  --color-text-inverse:   #ede8fb;
 
   /* --- Color: Accents --- */
   --color-purple: #9D89E0;
   --color-blue:   #E089A0;
   --color-amber:  #CCE089;
+  --color-teal:   #89E0C9;
 
   /* --- Color: Accent hover variants --- */
   --color-purple-light: #ede8fb;

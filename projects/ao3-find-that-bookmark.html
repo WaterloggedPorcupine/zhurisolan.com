@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FandomGobbler. — Zhuri Solan</title>
-  <meta name="description" content="FandomGobbler, a browser extension for tracking fanfiction reading progress on Archive of Our Own." />
+  <title>AO3 Find That Bookmark! — Zhuri Solan</title>
+  <meta name="description" content="AO3 Find That Bookmark!, a browser extension that catalogues bookmarked Archive of Our Own works that get deleted." />
   <link rel="stylesheet" href="../assets/css/global.css" />
   <script>(function(){var t=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t===null&&p))document.documentElement.setAttribute('data-theme','dark');})();</script>
 </head>
@@ -20,10 +20,10 @@
         </a>
         <p class="section-label">Web Extension</p>
         <h1 style="font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); font-weight: var(--weight-black); letter-spacing: -0.02em; line-height: 0.92; text-transform: uppercase; color: var(--color-purple); margin-bottom: var(--space-4);">
-          FandomGobbler.
+          AO3 Find That Bookmark!
         </h1>
         <p class="hero-sub">
-          A browser extension for tracking fanfiction reading progress on Archive of Our Own and Fanfiction.net.
+          Creates a 'Deleted' tab in AO3 so that any bookmarked works that get deleted end up catalogued instead of lost.
         </p>
       </div>
     </section>
@@ -37,16 +37,16 @@
               <h2>Overview</h2>
               <div class="prose">
                 <p>
-                  Archive of Our Own has millions of stories across thousands of fandoms, but no native way to
-                  keep track of active and past reads beyond a lengthy bookmark creation process. Users usually
-                  rely on making their own tracker spreadsheet, keeping a forever list of tabs on their phone
-                  or desktop, or quite simply using their own memory.
+                  Bookmarks are a common way for users on AO3 to either keep track of which works they've read or highlight
+                  a work they really enjoyed. However, when an author deletes their work,
+                  a user's bookmark will update into a "This has been deleted, sorry!" placeholder that contains zero
+                  information about which work it was. On the reader's end this creates a lot of turmoil, especially when
+                  you can't even begin to recall which work that might have been.
                 </p>
                 <p>
-                  FandomGobbler is a sidebar-based extension that lives alongside AO3 and Fanfiction.net and lets you,
-                  with minimal effort, track future, current, and past reads with a click.
-                  You can even rate works, track if works get deleted, hide works with tags
-                  you'd rather not read, make notes, and toggle amongst default/light/dark mode!
+                  AO3 Find That Bookmark! watches your bookmarks and when one becomes unavailable creates a bookmark that
+                  includes the title, author, fandom, tags, and summary. This new bookmark gets sorted into a new "Deleted" tab
+                  added right alongside your existing bookmark tabs, so you're left with a record instead of a tragic "Sorry!".
                 </p>
               </div>
             </div>
@@ -55,14 +55,9 @@
               <h2>Privacy Statement</h2>
               <div class="prose">
                 <p>
-                  FandomGobbler doesn't require an account and doesn't run any servers of its own. Every reading
-                  status and list you create is stored locally in your browser via local storage and nothing is
-                  uploaded, tracked, or shared with anyone, including me.
-                </p>
-                <p>
-                  The tradeoff of local-only storage is that it doesn't sync across devices on its own. If you
-                  choose to use the optional Google Sheets export to bridge that gap, that data goes directly to a
-                  spreadsheet in your own Google account. FandomGobbler will never sees or stores it.
+                  AO3 Find That Bookmark! doesn't require an account and doesn't run any servers of its own. The
+                  metadata it catalogues is stored locally in your browser via local storage. Nothing is uploaded,
+                  tracked, or shared with anyone, including me.
                 </p>
               </div>
             </div>
@@ -77,6 +72,7 @@
         <div class="case-media">
           <div class="case-media__item"><span>Add screenshot / gif</span></div>
           <div class="case-media__item"><span>Add screenshot / gif</span></div>
+          <div class="case-media__item"><span>Add screenshot / gif</span></div>
         </div>
 
       </div>
@@ -86,10 +82,12 @@
       <div class="container container--narrow">
         <p class="section-label">Links</p>
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
-          <a href="https://chromewebstore.google.com" target="_blank" rel="noopener" class="btn btn--primary">
+          <!-- TODO: add Chrome Web Store URL -->
+          <a href="" target="_blank" rel="noopener" class="btn btn--primary">
             Chrome Web Store ↗
           </a>
-          <a href="https://addons.mozilla.org/en-US/firefox/addon/ao3-story-tracker/" target="_blank" rel="noopener" class="btn btn--primary">
+          <!-- TODO: add Firefox Add-ons URL -->
+          <a href="" target="_blank" rel="noopener" class="btn btn--primary">
             Firefox Add-ons ↗
           </a>
           <!-- TODO: add GitHub repo URL -->

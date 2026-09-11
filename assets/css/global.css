@@ -203,79 +203,73 @@ ul, ol {
 }
 
 .project-card {
-  background: var(--color-surface);
-  border: var(--border-card);
-  border-radius: var(--radius-md);
-  padding: var(--space-6);
+  aspect-ratio: 4 / 5;
   display: flex;
   flex-direction: column;
-  gap: var(--space-3);
-  transition: border-color var(--transition-base);
+  border: 2.5px solid var(--color-purple);
+  border-radius: var(--radius-md);
+  overflow: hidden;
   text-decoration: none;
   color: inherit;
 }
 
-.project-card:hover {
-  border-color: rgba(0, 0, 0, 0.4);
+.project-card:hover .project-card__media img,
+.project-card:hover .project-card__media video {
+  transform: scale(1.04);
 }
 
-.project-card__category {
-  font-size: var(--text-xs);
-  font-weight: var(--weight-semibold);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+/* --- Media (top ~80%): the gif/photo does the talking --- */
+.project-card__media {
+  flex: 4 1 0%;
+  min-height: 0;
+  overflow: hidden;
+  border-bottom: 2.5px solid var(--color-purple);
+  background: var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-3);
   color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+
+.project-card__media img,
+.project-card__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-base);
+}
+
+/* --- Body (bottom ~20%): name + description, left-justified --- */
+.project-card__body {
+  flex: 1 1 0%;
+  min-height: 0;
+  background: var(--color-bg);
+  padding: var(--space-3) var(--space-5);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  gap: var(--space-1);
+  text-align: left;
 }
 
 .project-card__title {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-size: var(--text-lg);
   font-weight: var(--weight-black);
   line-height: var(--leading-tight);
   letter-spacing: 0.03em;
   text-transform: uppercase;
-  color: var(--color-purple);
+  color: transparent;
+  -webkit-text-stroke: 1px var(--color-text-secondary);
 }
 
 .project-card__desc {
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
-  line-height: var(--leading-relaxed);
-  flex: 1;
-}
-
-.project-card__highlight {
-  font-size: var(--text-xs);
-  color: var(--color-text-muted);
-  padding-top: var(--space-2);
-  border-top: 1px solid var(--color-border);
-}
-
-/* --- Archived cards (editorial list style) --- */
-.archived-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: var(--space-5);
-}
-
-.archived-card {
-  background: var(--color-surface);
-  border: var(--border-card);
-  border-radius: var(--radius-md);
-  padding: var(--space-5);
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-1);
-}
-
-.archived-card__title {
-  font-size: var(--text-base);
-  font-weight: var(--weight-medium);
-}
-
-.archived-card__desc {
-  font-size: var(--text-sm);
-  color: var(--color-text-muted);
   line-height: var(--leading-relaxed);
 }
 
@@ -331,6 +325,98 @@ ul, ol {
   border-radius: var(--radius-sm);
 }
 
+/* --- Case study cards (project detail pages) --- */
+.case-card {
+  border: 2.5px solid var(--color-purple);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg);
+  padding: var(--space-8);
+  margin-bottom: var(--space-5);
+}
+
+.case-card h2 {
+  font-family: var(--font-display);
+  font-size: var(--text-xl);
+  font-weight: var(--weight-black);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-purple);
+  margin-bottom: var(--space-4);
+}
+
+@media (max-width: 640px) {
+  .case-card {
+    padding: var(--space-6);
+  }
+}
+
+/* --- Case study layout: cards left, media gallery right --- */
+.case-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-8);
+  align-items: start;
+}
+
+/* Single, larger slot for the main gif/photo (right column) */
+.case-media-main {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border: 2.5px solid var(--color-purple);
+  border-radius: var(--radius-md);
+  background: var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+
+.case-media-main img,
+.case-media-main video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Extra gifs/photos beyond the main one: full-width, 2 columns, wraps into as many rows as needed */
+.case-media {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+  margin-top: var(--space-8);
+}
+
+.case-media__item {
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  border: 2.5px solid var(--color-purple);
+  border-radius: var(--radius-md);
+  background: var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-2);
+  color: var(--color-text-muted);
+  font-size: var(--text-xs);
+}
+
+.case-media__item img,
+.case-media__item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media (max-width: 900px) {
+  .case-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* --- Inline link style --- */
 .link-accent {
   color: var(--color-purple);
@@ -382,38 +468,10 @@ ul, ol {
   margin-block: var(--space-2);
 }
 
-/* --- Projects + archive side-by-side layout --- */
-.projects-layout .archived-grid {
-  gap: 0;
-}
-
-.projects-layout .archived-card {
-  background: none;
-  border: none;
-  border-bottom: 1px solid var(--color-border);
-  border-radius: 0;
-  padding: var(--space-4) 0;
-}
-
-.projects-layout {
-  display: grid;
-  grid-template-columns: 1fr 260px;
-  gap: var(--space-16);
-  align-items: start;
-}
-
-@media (max-width: 900px) {
-  .projects-layout {
-    grid-template-columns: 1fr;
-    gap: var(--space-12);
-  }
-}
-
 /* --- Theme transitions --- */
 body           { transition: background-color var(--transition-base), color var(--transition-base); }
 .site-nav      { transition: background-color var(--transition-base), border-color var(--transition-base); }
 .project-card  { transition: background-color var(--transition-base), border-color var(--transition-base); }
-.archived-card { transition: border-color var(--transition-base); }
 
 /* --- Responsive --- */
 @media (max-width: 640px) {
@@ -433,17 +491,7 @@ body           { transition: background-color var(--transition-base), color var(
     grid-template-columns: 1fr;
   }
 
-  .archived-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-
   .hero-display__outline {
     -webkit-text-stroke-width: 1.5px;
-  }
-}
-
-@media (max-width: 400px) {
-  .archived-grid {
-    grid-template-columns: 1fr;
   }
 }
