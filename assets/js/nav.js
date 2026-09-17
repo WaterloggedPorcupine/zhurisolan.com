@@ -7,6 +7,8 @@
  */
 
 (function () {
+  const NAV_SCRIPT = document.currentScript;
+
   const NAV_LINKS = [
     { label: 'Projects', href: '/index.html' },
     { label: 'About',    href: '/about.html' },
@@ -29,8 +31,13 @@
   </svg>`;
 
   function getRoot() {
-    const depth = location.pathname.split('/').filter(Boolean).length;
-    return depth > 1 ? '../'.repeat(depth - 1) : '';
+    // Derive the relative path back to the site root from how this script
+    // itself was referenced (e.g. "../assets/js/nav.js" -> "../"), rather
+    // than from location.pathname — which breaks under file:// URLs and
+    // when the site is hosted from a subdirectory.
+    const src = NAV_SCRIPT && NAV_SCRIPT.getAttribute('src');
+    if (!src) return '';
+    return src.replace(/assets\/js\/nav\.js(?:[?#].*)?$/, '');
   }
 
   function isActive(href) {

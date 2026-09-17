@@ -22,7 +22,7 @@
           <span class="hero-display__fill">OF EVERYDAY STUFF</span>
         </h1>
         <p class="hero-sub">
-          Just a bunch of projects on whatever floats my boat.
+          Just a bunch of projects on whatever strikes my interest.
         </p>
       </div>
     </section>
@@ -34,17 +34,21 @@
         <div class="card-grid">
 
           <a class="project-card" href="projects/ao3-tracker.html">
-            <div class="project-card__media"><span>Add screenshot / gif</span></div>
+            <div class="project-card__media">
+              <img src="assets/images/GIF+for+FG+1.gif" alt="FandomGobbler demo" style="object-position: 100% center;" />
+            </div>
             <div class="project-card__body">
               <h2 class="project-card__title">FandomGobbler.</h2>
               <p class="project-card__desc">
-                A browser extension for tracking fanfiction and reading progress on Archive of Our Own.
+                A browser extension for tracking stories and reading progress on Archive of Our Own.
               </p>
             </div>
           </a>
 
           <a class="project-card" href="projects/ao3-find-that-bookmark.html">
-            <div class="project-card__media"><span>Add screenshot / gif</span></div>
+            <div class="project-card__media">
+              <img src="assets/images/Find+that+Bookmark+photo.png" alt="AO3 Find That Bookmark! screenshot" />
+            </div>
             <div class="project-card__body">
               <h2 class="project-card__title">AO3 Find That Bookmark!</h2>
               <p class="project-card__desc">
@@ -53,38 +57,10 @@
             </div>
           </a>
 
-          <a class="project-card" href="projects/marsboreal-greenhouse.html">
-            <div class="project-card__media"><span>Add photo / gif</span></div>
-            <div class="project-card__body">
-              <h2 class="project-card__title">Marsboreal Greenhouse</h2>
-              <p class="project-card__desc">
-                Our response to NASA's BIG Idea Challenge for the design and operation of a Mars greenhouse.
-              </p>
-            </div>
-          </a>
-
-          <a class="project-card" href="projects/the-body-bun.html">
-            <div class="project-card__media"><span>Add photo / gif</span></div>
-            <div class="project-card__body">
-              <h2 class="project-card__title">The Body Bun</h2>
-              <p class="project-card__desc">
-                An inclusive backboard designed for bariatric and tall-stature patients.
-              </p>
-            </div>
-          </a>
-
-          <a class="project-card" href="projects/oppy-mars-rover.html">
-            <div class="project-card__media"><span>Add photo / gif</span></div>
-            <div class="project-card__body">
-              <h2 class="project-card__title">Oppy: Mars Rover</h2>
-              <p class="project-card__desc">
-                A children's storybook of NASA's robotic rover Opportunity.
-              </p>
-            </div>
-          </a>
-
           <a class="project-card" href="projects/you-have-me.html">
-            <div class="project-card__media"><span>Add photo / gif</span></div>
+            <div class="project-card__media">
+              <img src="assets/images/pop+up+laser+cut.gif" alt="You Have Me pop-up laser cut prototype" />
+            </div>
             <div class="project-card__body">
               <h2 class="project-card__title">You Have Me</h2>
               <p class="project-card__desc">
@@ -93,12 +69,82 @@
             </div>
           </a>
 
+          <a class="project-card" href="projects/marsboreal-greenhouse.html">
+            <div class="project-card__media">
+              <img src="assets/images/mars+greenhouse+render3-snapshot.webp" alt="Marsboreal Greenhouse render" />
+            </div>
+            <div class="project-card__body">
+              <h2 class="project-card__title">Marsboreal Greenhouse</h2>
+              <p class="project-card__desc">
+                A response to NASA's BIG Idea Challenge for the design and operation of a Mars greenhouse.
+              </p>
+            </div>
+          </a>
+
+          <a class="project-card" href="projects/oppy-mars-rover.html">
+            <div class="project-card__media">
+              <img src="assets/images/Oppy+title+page.webp" alt="Oppy: Mars Rover storybook title page" />
+            </div>
+            <div class="project-card__body">
+              <h2 class="project-card__title">Oppy: Mars Rover</h2>
+              <p class="project-card__desc">
+                A children's storybook of NASA's robotic rover Opportunity.
+              </p>
+            </div>
+          </a>
+
+          <a class="project-card" href="projects/the-body-bun.html">
+            <div class="project-card__media">
+              <img src="assets/images/pic+of+backboard.webp" alt="The Body Bun backboard" />
+            </div>
+            <div class="project-card__body">
+              <h2 class="project-card__title">The Body Bun</h2>
+              <p class="project-card__desc">
+                An inclusive backboard designed for bariatric and tall-stature patients.
+              </p>
+            </div>
+          </a>
+
         </div>
+
+        <div style="text-align: center; margin-top: var(--space-10);">
+          <button type="button" class="btn-more" id="show-more-btn" style="display: none;">More</button>
+        </div>
+
       </div>
     </section>
 
   </main>
 
   <script src="assets/js/nav.js"></script>
+  <script>
+    (function () {
+      // How many project cards to reveal per click. As long as the total
+      // number of cards fits within one page, the button stays hidden.
+      var PAGE_SIZE = 6;
+
+      var cards = Array.prototype.slice.call(document.querySelectorAll('.card-grid .project-card'));
+      var btn = document.getElementById('show-more-btn');
+      var shown = PAGE_SIZE;
+
+      cards.forEach(function (card, i) {
+        if (i >= shown) card.style.display = 'none';
+      });
+
+      if (cards.length > shown) {
+        btn.style.display = 'inline-block';
+      }
+
+      btn.addEventListener('click', function () {
+        shown += PAGE_SIZE;
+        cards.forEach(function (card, i) {
+          if (i < shown) card.style.display = '';
+        });
+        if (shown >= cards.length) {
+          btn.style.display = 'none';
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
