@@ -10,6 +10,24 @@
   <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
   <link rel="stylesheet" href="../assets/css/global.css" />
   <script>(function(){var t=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t===null&&p))document.documentElement.setAttribute('data-theme','dark');})();</script>
+  <style>
+    /* This page only: the demo video is the star, so give it more room
+       than the standard 50/50 split, and use its native 16:9 ratio
+       instead of the usual 4:3 placeholder shape. */
+    .case-layout--video-featured {
+      grid-template-columns: 1fr 1.6fr;
+    }
+
+    .case-layout--video-featured .case-media-main {
+      aspect-ratio: 16 / 9;
+    }
+
+    @media (max-width: 900px) {
+      .case-layout--video-featured {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 <body>
 
@@ -32,7 +50,7 @@
 
     <section class="page-section" style="padding-top: 0;">
       <div class="container">
-        <div class="case-layout">
+        <div class="case-layout case-layout--video-featured">
 
           <div>
             <div class="case-card">
