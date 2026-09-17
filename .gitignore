@@ -8,3 +8,7 @@ Thumbs.db
 
 # Misc
 *.log
+
+# Source videos (hosted externally, not committed — too large for git)
+*.mp4
+*.mov

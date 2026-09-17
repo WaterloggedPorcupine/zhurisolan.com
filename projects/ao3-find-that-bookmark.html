@@ -7,6 +7,19 @@
   <meta name="description" content="AO3 Find That Bookmark!, a browser extension that catalogues bookmarked Archive of Our Own works that get deleted." />
   <link rel="stylesheet" href="../assets/css/global.css" />
   <script>(function(){var t=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t===null&&p))document.documentElement.setAttribute('data-theme','dark');})();</script>
+  <style>
+    /* This page only: the single extra photo gets to be bigger and centered
+       instead of sitting in the standard 2-column grid. */
+    .case-media--single {
+      grid-template-columns: 1fr;
+      justify-items: center;
+    }
+
+    .case-media--single .case-media__item {
+      width: 100%;
+      max-width: 800px;
+    }
+  </style>
 </head>
 <body>
 
@@ -18,7 +31,6 @@
         <a href="../index.html" class="link-accent" style="font-size: var(--text-sm); display: inline-block; margin-bottom: var(--space-6);">
           ← Go Back
         </a>
-        <p class="section-label">Web Extension</p>
         <h1 style="font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); font-weight: var(--weight-black); letter-spacing: -0.02em; line-height: 0.92; text-transform: uppercase; color: var(--color-purple); margin-bottom: var(--space-4);">
           AO3 Find That Bookmark!
         </h1>
@@ -64,15 +76,17 @@
           </div>
 
           <!-- Main gif/photo -->
-          <div class="case-media-main"><span>Add main screenshot / gif</span></div>
+          <div class="case-media-main">
+            <img src="../assets/images/Find+That+Bookmark+Extended.png" alt="AO3 Find That Bookmark! extended screenshot" />
+          </div>
 
         </div>
 
-        <!-- Additional gifs/photos: 2 columns, wraps into as many rows as needed -->
-        <div class="case-media">
-          <div class="case-media__item"><span>Add screenshot / gif</span></div>
-          <div class="case-media__item"><span>Add screenshot / gif</span></div>
-          <div class="case-media__item"><span>Add screenshot / gif</span></div>
+        <!-- Additional photo: bigger and centered since it's the only one -->
+        <div class="case-media case-media--single">
+          <div class="case-media__item">
+            <img src="../assets/images/Deleted+Work+AO3+Bookmark+1.png" alt="Deleted work in AO3 Find That Bookmark's Deleted tab" />
+          </div>
         </div>
 
       </div>
@@ -82,13 +96,8 @@
       <div class="container container--narrow">
         <p class="section-label">Links</p>
         <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
-          <!-- TODO: add Chrome Web Store URL -->
-          <a href="" target="_blank" rel="noopener" class="btn btn--primary">
+          <a href="https://chromewebstore.google.com/detail/ao3-find-that-bookmark-de/bndckklfieneookfffagdaajmlnoljmn" target="_blank" rel="noopener" class="btn btn--primary">
             Chrome Web Store ↗
-          </a>
-          <!-- TODO: add Firefox Add-ons URL -->
-          <a href="" target="_blank" rel="noopener" class="btn btn--primary">
-            Firefox Add-ons ↗
           </a>
           <!-- TODO: add GitHub repo URL -->
           <a href="" target="_blank" rel="noopener" class="btn btn--outline">
