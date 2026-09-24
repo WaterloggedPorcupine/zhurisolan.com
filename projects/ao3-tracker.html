@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FandomGobbler. — Zhuri Solan</title>
-  <meta name="description" content="FandomGobbler, a browser extension for tracking fanfiction reading progress on Archive of Our Own." />
+  <title>FandomGobbler (formerly AO3 Story Tracker) — Zhuri Solan</title>
+  <meta name="description" content="FandomGobbler (formerly AO3 Story Tracker), a browser extension for tracking fanfiction reading progress on Archive of Our Own." />
   <link rel="icon" href="../favicon.ico" sizes="any" />
   <link rel="icon" href="../favicon-32x32.png" type="image/png" />
   <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
@@ -15,6 +15,13 @@
        than the standard 50/50 split. */
     .case-layout--video-featured {
       grid-template-columns: 1fr 1.6fr;
+    }
+
+    .hero-formerly {
+      display: block;
+      margin-top: var(--space-3);
+      font-size: 0.3em;
+      letter-spacing: 0.02em;
     }
 
     @media (max-width: 900px) {
@@ -36,6 +43,7 @@
         </a>
         <h1 style="font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); font-weight: var(--weight-black); letter-spacing: -0.02em; line-height: 0.92; text-transform: uppercase; color: var(--color-purple); margin-bottom: var(--space-4);">
           FandomGobbler.
+          <span class="hero-formerly">(formerly AO3 Story Tracker)</span>
         </h1>
         <p class="hero-sub">
           A browser extension for tracking fanfiction reading progress on Archive of Our Own and Fanfiction.net.
@@ -72,13 +80,29 @@
               <div class="prose">
                 <p>
                   FandomGobbler doesn't require an account and doesn't run any servers of its own. Every reading
-                  status and list you create is stored locally in your browser via local storage and nothing is
-                  uploaded, tracked, or shared with anyone, including me.
+                  status and list you create is stored locally in your browser, and nothing is uploaded, tracked,
+                  or shared with anyone, including me.
                 </p>
                 <p>
-                  The tradeoff of local-only storage is that it doesn't sync across devices on its own. If you
-                  choose to use the optional Google Sheets export to bridge that gap, that data goes directly to a
-                  spreadsheet in your own Google account. FandomGobbler will never sees or stores it.
+                  <a href="fandomgobbler-privacy.html" class="link-accent">Read the full privacy policy →</a>
+                </p>
+              </div>
+            </div>
+
+            <div class="case-card">
+              <h2>Google Sheets Sync (Optional)</h2>
+              <div class="prose">
+                <p>
+                  Local storage doesn't follow you between devices. If you turn on Google Sheets sync, FandomGobbler
+                  keeps a copy of your library in a spreadsheet in your own Google Drive and syncs it in both directions,
+                  so your reading list stays up to date on every browser you use.
+                </p>
+                <p>
+                  To do this, FandomGobbler asks for access to Google Sheets and to the Drive files it creates, and reads
+                  your account's email address to detect account switches. It only touches its own sync spreadsheet, and
+                  your data goes directly between your browser and Google. FandomGobbler never sees or stores it.
+                  You can disconnect and revoke access at any time. See the
+                  <a href="fandomgobbler-privacy.html#google-sheets-sync" class="link-accent">privacy policy</a> for details.
                 </p>
               </div>
             </div>
