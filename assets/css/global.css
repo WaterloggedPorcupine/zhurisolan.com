@@ -390,6 +390,13 @@ ul, ol {
   background: none;
 }
 
+/* Video embeds have no natural size of their own to shrink-wrap to, but
+   they're always 16:9 in practice, so use that instead of the generic
+   4:3 placeholder shape. */
+.case-media-main:has(iframe) {
+  aspect-ratio: 16 / 9;
+}
+
 .case-media-main img,
 .case-media-main video {
   display: block;
