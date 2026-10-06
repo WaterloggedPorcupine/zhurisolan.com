@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nightmare on Vista Avenue — Zhuri Solan</title>
+  <meta name="description" content="Nightmare on Vista Avenue, a pixel-art graveyard side-scroller made for a Halloween party." />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" href="../favicon-32x32.png" type="image/png" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <script>(function(){var t=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t===null&&p))document.documentElement.setAttribute('data-theme','dark');})();</script>
+</head>
+<body>
+
+  <header id="site-nav"></header>
+
+  <main>
+    <section class="page-section page-section--hero">
+      <div class="container container--narrow">
+        <a href="../index.html" class="link-accent" style="font-size: var(--text-sm); display: inline-block; margin-bottom: var(--space-6);">
+          ← Go Back
+        </a>
+        <h1 style="font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); font-weight: var(--weight-black); letter-spacing: -0.02em; line-height: 0.92; text-transform: uppercase; color: var(--color-purple); margin-bottom: var(--space-4);">
+          Nightmare on Vista Avenue
+        </h1>
+        <p class="hero-sub">
+          A pixel-art graveyard side-scroller made for a Halloween party.
+        </p>
+      </div>
+    </section>
+
+    <!-- Playable game -->
+    <section class="page-section" style="padding-top: 0;">
+      <div class="container">
+        <div class="case-media-main" style="background: #050410;">
+          <iframe src="https://waterloggedporcupine.github.io/nightmare-on-vista-avenue/" title="Nightmare on Vista Avenue, playable game" allow="autoplay; fullscreen" loading="lazy"></iframe>
+        </div>
+        <p style="font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-3);">
+          Click the game to start, then use the arrow keys. Sound is on; press M to mute. On a phone, open it full screen for the on-screen buttons.
+        </p>
+      </div>
+    </section>
+
+    <section class="page-section" style="padding-top: 0;">
+      <div class="container">
+        <div class="case-layout">
+
+          <div>
+            <div class="case-card">
+              <h2>Overview</h2>
+              <div class="prose">
+                <p>
+                  A browser game for my Halloween party. Players type in their name, then run through a foggy
+                  graveyard dodging dancing skeletons, spinning pumpkins, flying ghosts and dropping spiders to reach
+                  a Dracula-castle door. Behind each door waits a multiple-choice question about me. Miss the last one
+                  and the ghosts swarm; get it right and the sunrise chases them away.
+                </p>
+                <p>
+                  Built with plain HTML, CSS and JavaScript on a tiny 320&times;180 canvas, scaled up for crisp pixels.
+                  There are no image files: every sprite is drawn from a small grid of characters, and the sound
+                  effects come from a little synthesizer written with the Web Audio API.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="case-card">
+              <h2>How to Play</h2>
+              <div class="prose">
+                <ul>
+                  <li><strong>Up</strong> jumps.</li>
+                  <li><strong>Right</strong> runs forward and <strong>Left</strong> runs back.</li>
+                  <li><strong>Down</strong> ducks under ghosts.</li>
+                  <li><strong>Enter</strong> picks an answer.</li>
+                </ul>
+                <p>
+                  You get three lives per level. Two levels stand between you and morning, and the second one is faster.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" style="padding-top: 0;">
+      <div class="container container--narrow">
+        <p class="section-label">Links</p>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
+          <a href="https://waterloggedporcupine.github.io/nightmare-on-vista-avenue/" target="_blank" rel="noopener" class="btn btn--primary">
+            Play Full Screen ↗
+          </a>
+          <a href="https://github.com/WaterloggedPorcupine/nightmare-on-vista-avenue" target="_blank" rel="noopener" class="btn btn--outline">
+            GitHub ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/nav.js"></script>
+</body>
+</html>
