@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gladys — Zhuri Solan</title>
+  <meta name="description" content="Gladys, an AI lab automation engineer that turns a scientist's request into a reviewable robot protocol. Work in progress." />
+  <link rel="icon" href="../favicon.ico" sizes="any" />
+  <link rel="icon" href="../favicon-32x32.png" type="image/png" />
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png" />
+  <link rel="stylesheet" href="../assets/css/global.css" />
+  <script>(function(){var t=localStorage.getItem('theme'),p=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(t===null&&p))document.documentElement.setAttribute('data-theme','dark');})();</script>
+</head>
+<body>
+
+  <header id="site-nav"></header>
+
+  <main>
+    <section class="page-section page-section--hero">
+      <div class="container container--narrow">
+        <a href="../index.html" class="link-accent" style="font-size: var(--text-sm); display: inline-block; margin-bottom: var(--space-6);">
+          ← Go Back
+        </a>
+        <h1 style="font-family: var(--font-display); font-size: clamp(3rem, 8vw, 6rem); font-weight: var(--weight-black); letter-spacing: -0.02em; line-height: 0.92; text-transform: uppercase; color: var(--color-purple); margin-bottom: var(--space-4);">
+          Gladys
+        </h1>
+        <p class="hero-sub">
+          An AI lab automation engineer that turns a scientist's request into a robot protocol a human signs off on. Currently being built.
+        </p>
+      </div>
+    </section>
+
+    <section class="page-section" style="padding-top: 0;">
+      <div class="container container--narrow">
+        <img src="../assets/images/gladys-card.svg" alt="Sketch of the flow: a scientist's request becomes a protocol, which passes a sandbox check and waits for a person to approve it or request changes" style="width: 100%; max-width: 560px; display: block; margin: 0 auto; border: 3.5px solid var(--color-purple); border-radius: 6px;" />
+      </div>
+    </section>
+
+    <section class="page-section" style="padding-top: 0;">
+      <div class="container">
+        <div class="case-layout">
+
+          <div>
+            <div class="case-card">
+              <h2>Overview</h2>
+              <div class="prose">
+                <p>
+                  Lab robots are fast, but getting an experiment onto one is slow. Someone has to translate what the
+                  scientist wants into a protocol script, check it won't crash the deck, and run it. Gladys is meant to
+                  do that translation: a scientist describes an experiment in plain language, Gladys writes the robot
+                  protocol, checks it in a simulator, and hands it to a person to approve before anything moves.
+                </p>
+                <p>
+                  It's an orchestration layer that sits between the people and the instruments, not another LIMS or
+                  electronic lab notebook. The first robot it targets is the Opentrons liquid handler.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="case-card">
+              <h2>Where It's At</h2>
+              <div class="prose">
+                <p>
+                  The foundations are done. The part that writes protocols and the part that talks to a robot are next.
+                </p>
+                <ul>
+                  <li><strong>Done:</strong> the run record and its lifecycle, Postgres storage, protocol file storage, config, logging, and tests and CI that enforce how the pieces connect.</li>
+                  <li><strong>Next:</strong> the agent that writes protocols, the Opentrons simulator check, and evals that measure how often it gets them right.</li>
+                  <li><strong>Later:</strong> an API, a review screen for approving protocols, and a second agent that reviews the first one's work.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div style="grid-column: 1 / -1;">
+            <div class="case-card">
+              <h2>Design Choices</h2>
+              <div class="prose">
+                <ul>
+                  <li><strong>A human approves the exact protocol.</strong> Approval is tied to the protocol file's fingerprint (a hash), so if a single character changes after sign-off, the approval no longer counts.</li>
+                  <li><strong>Nothing gets rewritten.</strong> Each run keeps an append-only history of what was asked, what was generated, who approved it and what happened, so a result can always be traced back to its request.</li>
+                  <li><strong>The core doesn't depend on the tools.</strong> The lab logic is plain Python. Databases, storage and robots plug in around it, so supporting a new robot shouldn't mean touching the rules.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" style="padding-top: 0;">
+      <div class="container container--narrow">
+        <p class="section-label">Links</p>
+        <div style="display: flex; flex-wrap: wrap; gap: var(--space-3);">
+          <a href="https://github.com/WaterloggedPorcupine/Gladys" target="_blank" rel="noopener" class="btn btn--primary">
+            GitHub ↗
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script src="../assets/js/nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 760" role="img" aria-labelledby="t">
+  <title id="t">Gladys turns a scientist's request into a robot protocol, checks it in a sandbox, and waits for a person to approve it or request changes</title>
+  <style>
+    .d { font-family: 'Barlow Condensed', 'Arial Narrow', 'Roboto Condensed', sans-serif; font-weight: 900; }
+    .s { font-family: 'Barlow', 'Segoe UI', Arial, sans-serif; }
+    .m { font-family: 'JetBrains Mono', Consolas, 'Courier New', monospace; }
+  </style>
+
+  <rect width="800" height="760" fill="#ede8fb"/>
+  <!-- 1. the scientist's request -->
+  <g transform="translate(150 70)">
+    <rect width="500" height="110" rx="18" fill="#fff" stroke="#9D89E0" stroke-width="4"/>
+    <path d="M60 108 L48 140 L96 108 Z" fill="#fff" stroke="#9D89E0" stroke-width="4" stroke-linejoin="round"/>
+    <rect x="52" y="100" width="52" height="12" fill="#fff"/>
+    <text x="28" y="48" class="s" font-size="24" fill="#3a3530">"Dilute each sample 1:10</text>
+    <text x="28" y="82" class="s" font-size="24" fill="#3a3530">across a 96-well plate."</text>
+  </g>
+
+  <!-- arrow -->
+  <path d="M400 210 V250" stroke="#1c1a17" stroke-width="4" stroke-linecap="round"/>
+  <path d="M388 240 L400 256 L412 240" fill="none" stroke="#1c1a17" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 2. the generated protocol -->
+  <g transform="translate(150 270)">
+    <rect width="500" height="200" rx="10" fill="#1c1a17"/>
+    <rect width="500" height="38" rx="10" fill="#3a3530"/>
+    <rect y="28" width="500" height="10" fill="#3a3530"/>
+    <circle cx="22" cy="19" r="6" fill="#E089A0"/><circle cx="42" cy="19" r="6" fill="#CCE089"/><circle cx="62" cy="19" r="6" fill="#89E0C9"/>
+    <text x="90" y="25" class="m" font-size="16" fill="#ede8fb" fill-opacity="0.7">protocol.py</text>
+    <text x="24" y="76" class="m" font-size="19" fill="#9D89E0">def <tspan fill="#ede8fb">run(ctx):</tspan></text>
+    <text x="54" y="108" class="m" font-size="19" fill="#ede8fb">plate = ctx.load(<tspan fill="#CCE089">"96well"</tspan>)</text>
+    <text x="54" y="140" class="m" font-size="19" fill="#ede8fb">for well in plate:</text>
+    <text x="84" y="172" class="m" font-size="19" fill="#ede8fb">pipette.transfer(<tspan fill="#89E0C9">20</tspan>, ...)</text>
+  </g>
+
+  <!-- arrow -->
+  <path d="M400 482 V522" stroke="#1c1a17" stroke-width="4" stroke-linecap="round"/>
+  <path d="M388 512 L400 528 L412 512" fill="none" stroke="#1c1a17" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- 3. review panel: sandbox result, then the human decides -->
+  <g transform="translate(150 545)">
+    <rect width="500" height="150" rx="14" fill="#fff" stroke="#9D89E0" stroke-width="4"/>
+    <circle cx="40" cy="42" r="16" fill="#89E0C9"/>
+    <path d="M32 42 L38 48 L49 36" fill="none" stroke="#1c1a17" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="68" y="50" class="s" font-size="22" fill="#3a3530">Passed the sandbox check</text>
+
+    <rect x="24" y="80" width="200" height="48" rx="24" fill="#CCE089" stroke="#1c1a17" stroke-width="3"/>
+    <text x="124" y="112" text-anchor="middle" class="s" font-size="22" font-weight="600" fill="#1c1a17">Approve</text>
+
+    <rect x="240" y="80" width="236" height="48" rx="24" fill="#fff" stroke="#1c1a17" stroke-width="3"/>
+    <text x="358" y="112" text-anchor="middle" class="s" font-size="22" font-weight="600" fill="#1c1a17">Request changes</text>
+  </g>
+</svg>
